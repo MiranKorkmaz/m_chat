@@ -1,23 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from "react";
+import { PostProps } from "./api/interfaces";
+import axios from "axios";
 
-function App() {
+axios.defaults.baseURL = "http://localhost:3001";
+
+const fetchPosts = async (): Promise<PostProps> => {
+  const response = await axios.get<PostProps>("/")
+  return response.data
+};
+
+const App = () => {
+  const [post, setPost] = useState<PostProps | undefined>();
+  
+  useEffect(() => {
+    fetchPosts().then(setPost)
+  }, []);
+  
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {post ? post.text : "No posts"}
       </header>
     </div>
   );
