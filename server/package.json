@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon src/app.ts",
     "build": "tsc",
-    "lint": "eslint . --ext .ts --fix"
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "npm run lint -- --fix"
   },
   "keywords": [],
   "author": "",
