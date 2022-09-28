@@ -12,13 +12,15 @@ const fetchPosts = async (): Promise<PostProps> => {
 
 function App() {
   const [post, setPost] = useState<PostProps | undefined>();
+
   useEffect(() => {
     fetchPosts().then(setPost);
   }, []);
   return (
     <div className="App">
       <header className="App-header">
-        {post ? post.text : 'No posts'}
+        <p>{post ? post.text : 'No posts'}</p>
+        <p>{post ? `${post.timeStamp.toString().split('T')[0]} at ${post.timeStamp.toString().split('T')[1].substring(0, 8)} ${parseInt(post.timeStamp.toString().split('T')[1].substring(0, 8), 10) >= 12 ? 'PM' : 'AM'} ` : 'No date'}</p>
       </header>
     </div>
   );
