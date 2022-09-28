@@ -9,7 +9,8 @@ const port: number | string = process.env.PORT || 3001;
 
 app.get('/', (req: Request, res: Response<PostProps>) => {
   res.send({
-    text: "HI!!!!"
+    text: "HI!!!!",
+    timeStamp: new Date()
   })
 });
 
