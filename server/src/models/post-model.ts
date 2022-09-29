@@ -4,8 +4,7 @@ import { IPost } from "../api/interfaces";
 const PostSchema = new Schema({
   userName: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   text: {
     type: String,

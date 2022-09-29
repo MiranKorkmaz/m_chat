@@ -31,6 +31,7 @@
       "react/jsx-uses-react": ["off"],
       "react/jsx-props-no-spreading": ["warn"],
       "react/no-unescaped-entities": ["off"],
-      "react/object-curly-newline": ["off"]
+      "react/object-curly-newline": ["off"],
+      "@typescript-eslint/no-shadow": ["off"]
     }
 }
