@@ -28,6 +28,7 @@ function App() {
       await axios.post<Array<IPost>>('/posts', post);
       const response = await axios.get<Array<IPost>>('/posts');
       setPost(response.data);
+      setPost("");
     } catch (err) {
       setPost([]);
       setError('Something went wrong with fetching posts..');
