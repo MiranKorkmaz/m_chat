@@ -20,7 +20,7 @@ export const mongoDbSetUp = async (url: string) => {
 };
 
 export const loadAllPosts = async (): Promise<Array<IPost>> => {
-  return PostModel.find({}).exec()
+  return PostModel.find({}).sort({ timeStamp: -1 }).exec()
 };
 
 export const savePostToDB = async (post: IPost): Promise<void> => {
