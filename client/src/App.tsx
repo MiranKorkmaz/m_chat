@@ -16,7 +16,7 @@ function App() {
   const [error, setError] = useState<string | undefined>();
   const [postText, setPostText] = useState<string>('');
   const [userNameText, setUserNameText] = useState<string>('');
-  
+
   const createPost = async (postText: string, userNameText: string): Promise<void> => {
     const post: IPost = {
       userName: userNameText,
@@ -27,8 +27,8 @@ function App() {
       await axios.post<Array<IPost>>('/posts', post);
       const response = await axios.get<Array<IPost>>('/posts');
       setPost(response.data);
-      setPostText("");
-      setUserNameText("");
+      setPostText('');
+      setUserNameText('');
     } catch (err) {
       setPost([]);
       setError('Something went wrong with fetching posts..');
