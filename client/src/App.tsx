@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IPost } from './api/interfaces';
@@ -28,11 +28,15 @@ function App() {
       const response = await axios.get<Array<IPost>>('/posts');
       setPost(response.data);
       setPostText('');
-      setUserNameText('');
     } catch (err) {
       setPost([]);
       setError('Something went wrong with fetching posts..');
     }
+  };
+  
+  const clearInput = () => {
+    setPostText("");
+    setUserNameText("");
   };
 
   useEffect(() => {
@@ -73,7 +77,14 @@ function App() {
       <section>
         <input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} />
         <input type="text" value={userNameText} onChange={(e) => setUserNameText(e.target.value)} />
-        <button type="submit" onClick={() => createPost(postText, userNameText)}>Send</button>
+        <button
+          type="submit"
+          disabled={userNameText.length < 1 || postText.length < 1}
+          onClick={() => createPost(postText, userNameText)}
+        >
+          Send
+        </button>
+        <button onClick={clearInput}>Clear fields</button>
       </section>
     </div>
   );
