@@ -28,7 +28,6 @@ function App() {
       const response = await axios.get<Array<IPost>>('/posts');
       setPost(response.data);
       setPostText('');
-      setUserNameText('');
     } catch (err) {
       setPost([]);
       setError('Something went wrong with fetching posts..');
@@ -73,7 +72,7 @@ function App() {
       <section>
         <input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} />
         <input type="text" value={userNameText} onChange={(e) => setUserNameText(e.target.value)} />
-        <button type="submit" onClick={() => createPost(postText, userNameText)}>Send</button>
+        <button type="submit" disabled={userNameText.length < 1 || postText.length < 1} onClick={() => createPost(postText, userNameText)}>Send</button>
       </section>
     </div>
   );
