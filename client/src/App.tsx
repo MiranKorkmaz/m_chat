@@ -5,7 +5,6 @@ import { IPost } from './api/interfaces';
 
 axios.defaults.baseURL = process.env.REACT_APP_POST_API || 'http://localhost:3001';
 
-// fetch posts
 const fetchPosts = async (): Promise<Array<IPost>> => {
   const response = await axios.get<Array<IPost>>('/posts');
   return response.data;
@@ -33,10 +32,10 @@ function App() {
       setError('Something went wrong with fetching posts..');
     }
   };
-  
+
   const clearInput = () => {
-    setPostText("");
-    setUserNameText("");
+    setPostText('');
+    setUserNameText('');
   };
 
   useEffect(() => {
@@ -47,6 +46,21 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <section className="App-form">
+        <p className="label">User</p>
+        <input type="text" value={userNameText} onChange={(e) => setUserNameText(e.target.value)} />
+        <p className="label">Message</p>
+        <input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} />
+        <button
+          type="submit"
+          disabled={userNameText.length < 1 || postText.length < 1}
+          onClick={() => createPost(postText, userNameText)}
+          className="submit-button"
+        >
+          Send
+        </button>
+        <button className="clear-button" type="reset" onClick={clearInput}>Clear all fields</button>
+      </section>
       <header className="App-header">
         {post ? post.map((p) => (
           <div key={p.id}>
@@ -74,18 +88,6 @@ function App() {
           </div>
         )) : error || 'Waiting for posts..'}
       </header>
-      <section>
-        <input type="text" value={postText} onChange={(e) => setPostText(e.target.value)} />
-        <input type="text" value={userNameText} onChange={(e) => setUserNameText(e.target.value)} />
-        <button
-          type="submit"
-          disabled={userNameText.length < 1 || postText.length < 1}
-          onClick={() => createPost(postText, userNameText)}
-        >
-          Send
-        </button>
-        <button onClick={clearInput}>Clear fields</button>
-      </section>
     </div>
   );
 }
