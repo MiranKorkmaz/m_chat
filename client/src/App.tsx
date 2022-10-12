@@ -61,30 +61,33 @@ function App() {
         </button>
         <button className="clear-button" type="reset" onClick={clearInput}>Clear all fields</button>
       </section>
-      <header className="App-header">
+      <header className="app-output">
         {post ? post.map((p) => (
-          <div key={p.id}>
-            <p key={p.id}>
-              Message:
-              {' '}
-              {p.text}
-            </p>
-            <p key={p.id}>
-              User:
-              {' '}
-              {p.userName}
-            </p>
-            <p key={p.id}>
-              Date:
-              {' '}
-              {p.timeStamp.toString().split('T')[0]}
-              {' '}
-              at
-              {' '}
-              {p.timeStamp.toString().split('T')[1].substring(0, 8)}
-              {' '}
-              {parseInt(p.timeStamp.toString().split('T')[1].substring(0, 8), 10) >= 12 ? 'PM' : 'AM'}
-            </p>
+          <div>
+            <div className="app-messages" key={p.id}>
+              <p key={p.id}>
+                {' '}
+                {p.text}
+              </p>
+              <p key={p.id}>
+                Sent by:
+                {' '}
+                {p.userName}
+              </p>
+            </div>
+            <div className="app-date" key={p.id}>
+              <p key={p.id}>
+                Date:
+                {' '}
+                {p.timeStamp.toString().split('T')[0]}
+                {' '}
+                at
+                {' '}
+                {p.timeStamp.toString().split('T')[1].substring(0, 8)}
+                {' '}
+                {parseInt(p.timeStamp.toString().split('T')[1].substring(0, 8), 10) >= 12 ? 'PM' : 'AM'}
+              </p>
+            </div>
           </div>
         )) : error || 'Waiting for posts..'}
       </header>

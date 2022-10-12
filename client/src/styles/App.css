@@ -58,8 +58,18 @@ button:hover {
   }
 }
 
-.App-header {
+.app-output {
+  width: 400px;
+}
 
+.app-messages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.app-date {
+  font-size: 12px;
 }
 
 .App-link {
