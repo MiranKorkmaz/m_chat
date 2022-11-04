@@ -1,0 +1,23 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "**Backend:** npm run lint -- --fix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiranKorkmaz/m_chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiranKorkmaz/m_chat/issues"
+  },
+  "workspaces": [
+    "./packages/*"
+  ],
+  "homepage": "https://github.com/MiranKorkmaz/m_chat#readme"
+}

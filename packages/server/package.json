@@ -1,7 +1,6 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.ts",
@@ -28,5 +27,14 @@
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "mongoose": "^6.6.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiranKorkmaz/m_chat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MiranKorkmaz/m_chat/issues"
+  },
+  "homepage": "https://github.com/MiranKorkmaz/m_chat#readme",
+  "description": ""
 }

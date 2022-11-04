@@ -1,0 +1,19 @@
+FROM node:16-alpine
+
+WORKDIR /usr/src/app
+
+COPY ./package*.json ./
+COPY ./packages/client/package*.json ./packages/client/
+
+ARG APP_POST_API
+ENV REACT_APP_POST_API=${APP_POST_API}
+
+RUN npm ci -w packages/client/
+
+COPY ./packages/client ./packages/client/
+
+RUN npm run build -w packages/client
+
+EXPOSE 3000
+
+CMD [ "npx", "serve", "packages/client/build" ]
