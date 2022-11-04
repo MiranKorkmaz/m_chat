@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IPost } from './api/interfaces';
 
-axios.defaults.baseURL = process.env.REACT_APP_POST_API || 'http://localhost:3001';
+axios.defaults.baseURL = process.env.REACT_APP_POST_API || 'http://localhost:4000';
 
 const fetchPosts = async (): Promise<Array<IPost>> => {
   const response = await axios.get<Array<IPost>>('/posts');

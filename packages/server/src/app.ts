@@ -9,8 +9,8 @@ dotenv.config();
 const app: Application = express();
 app.use(cors()); // Configure CORS properly to secure app
 app.use(json());
-const port: number | string = process.env.SERVER_PORT || 3001;
-const mongoDbURL: string = process.env.MONGO_URL || "4000";
+const port: number | string = process.env.SERVER_PORT || 4000;
+const mongoDbURL: string = process.env.MONGO_URL || "mongodb://localhost:27017/chatapp";
 
 app.use('/posts', postController)
 
