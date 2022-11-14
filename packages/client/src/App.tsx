@@ -39,11 +39,15 @@ function App() {
   };
 
   useEffect(() => {
-    fetchPosts().then(setPost).catch(() => {
-      setPost([]);
-      setError('Something went wrong with fetching posts');
-    });
+    const interval = setInterval(() => {
+      fetchPosts().then(setPost).catch(() => {
+        setPost([]);
+        setError('Something went wrong with fetching posts');
+      });
+    }, 1000);
+    return () => clearInterval(interval);
   }, []);
+
   return (
     <div className="App">
       <section className="App-form">
